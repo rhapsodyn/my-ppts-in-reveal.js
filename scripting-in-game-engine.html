@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>SIGE</title>
+
+		<meta name="description" content="SIGE Presentation">
+		<meta name="author" content="rhapsodyn">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				
+				<section data-markdown>
+					<script type="text/template">
+					#Scripting In Game Engine#
+
+					by Tassadarliu
+					</script>
+				</section>
+
+
+				<section data-markdown>
+					<script type="text/template">
+					##Content##
+
+					+ [Lua](#/lua)
+					+ [Mono](#/mono)
+					+ [Lua In Unity](#/liu)
+					</script>
+				</section>
+
+
+				<section>
+					<section id="lua" data-markdown>
+						##Lua##
+
+						+ Lua发明于1993年，巴西
+						+ PUC-lua最新的release版本为5.3.2，更新于2015.12
+						+ 现在流行的Lua实现有：PUC-lua和luajit
+						+ Lua作为脚步语言在游戏中最成功的例子：Wow AddOn					
+					</section>
+
+					<section data-markdown>
+						###为什么Lua适合作为游戏脚本语言？###
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+						有图有真相：
+
+						![lua_design_goal](assets/images/lua.jpg)
+
+						>embeddable scripting language
+						</script>
+					</section>
+
+					<section data-markdown>
+						##Lua小##
+
+						+ Lua5.1（推荐一读的版本）所有代码行数只有1.5w左右
+						+ 内存的footprint小
+						+ 作为语言来说足够简单
+					</section>
+
+					<section data-markdown>
+						##Lua快##
+
+						+ 简单的vm和opcode
+						+ [benchmark vs python](http://benchmarksgame.alioth.debian.org/u64/compare.php?lang=lua&lang2=python3)
+						+ [Luajit可以更快](http://luajit.org/performance_arm.html)
+					</section>
+
+					<section data-markdown>
+						##但最主要还是小##
+
+						+ 世上语言千千万，lua最可贵的就是简单
+						+ 多数时候
+					</section>
+				</section>
+
+
+				<section>
+					<section id="mono" data-markdown>
+						![zhuangbility](assets/images/zhuangbility.jpg)
+					</section>
+
+					<section data-markdown>
+						##Mono##
+
+						+ Mono是一个开源版本的.Net
+						+ 源自开原项目，后来由商业公司Xamarin接手主导开发
+						+ 长久以来最大的sponsor还是MS，2月Xamarin已然被微软收购
+						+ Mono作为脚本引擎在游戏中最成功的例子：Unity
+					</section>
+
+					<section data-markdown>
+						##为什么Mono可以用作脚本引擎?##
+					</section>
+
+					<section data-markdown>
+						Script Engine ?
+
+						![mono](assets/images/mono.png)
+
+						[官方出处](http://www.mono-project.com/docs/advanced/embedding/scripting/)
+					</section>
+
+					<section data-markdown>
+						##“Modern”的运行时##
+					</section>
+
+					<section data-markdown>
+						##支持的语言多##
+					</section>
+
+					<section data-markdown>
+						##效率还凑活##
+					</section>
+
+					<section>
+						##附加题:为什么.Net不能做脚本引擎？##
+					</section>
+				</section>
+
+
+				<section>
+					<section id="liu">
+						<p>more and more demo</p>
+					</section>
+				</section>
+
+
+				<section data-markdown>
+					<script type="text/template">
+					
+					#End#
+
+					</script>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
