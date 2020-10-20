@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Presatation by rhapsodyn</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-markdown>
+				## 震惊！短短100行代码，服务器性能增强200倍！他竟然干了这个！
+				**by 刘晓晓**
+			</section>
+			<section data-markdown>
+				## Content
+				+ Example
+				+ Next.js
+				+ Flamegraph
+				+ AutoCannon
+			</section>
+			<section data-markdown>
+				## Show Me The Example
+			</section>
+			<section>
+				<section data-markdown>
+					## Next.js
+				</section>
+				<section data-markdown>
+					### Basis
+					+ [https://nextjs.org/](https://nextjs.org/)
+					+ Base On React
+					+ SSR = Server Side Rendering
+					+ Why SSR? For SEO! (for ux)
+				</section>
+				<section data-markdown>
+					### Advanced
+					+ How to write your own next?
+					+ [ReactDOMServer](https://reactjs.org/docs/react-dom-server.html)
+					+ [Expressjs](http://expressjs.com/)
+				</section>
+				<section data-markdown>
+					### Achilles' Heel of Next.js
+					+ RenderToString()
+					+ [A long open issue](https://github.com/zeit/next.js/issues/1209)
+				</section>
+			</section>
+			<section>
+				<section data-markdown>
+					## AutoCannon
+				</section>
+				<section data-markdown>
+					### Perf test || Load test
+					+ Apache JMeter
+					+ LoadRunner
+					+ ab
+				</section>
+				<section data-markdown>
+					## Why AutoCannon
+					+ [https://github.com/mcollina/autocannon](https://github.com/mcollina/autocannon)
+					+ Javascript是最好的语言
+					+ 量大？？
+					+ Programmable
+				</section>
+			</section>
+			<section>
+				<section data-markdown>
+					## 0x
+				</section>
+				<section data-markdown>
+					### Flamegraph
+					+ by [Brendan Gregg](http://www.brendangregg.com/)
+					+ 只是一系列perf工具中的图形化展示工具，类似kibana
+					+ kernel级别的sample
+				</section>
+				<section data-markdown>
+					## 0x
+					+ [nodejs有参数可以支持打点](https://nodejs.org/en/docs/guides/diagnostics-flamegraph/#perf-output-issues)
+					+ [0x](https://github.com/davidmarkclements/0x)就是傻瓜式的工具
+				</section>
+			</section>
+			<section data-markdown>
+				## Show Me The Code
+			</section>
+			<section data-markdown>
+				## THE END
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			history: true,
+			// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+	</script>
+</body>
+
+</html>

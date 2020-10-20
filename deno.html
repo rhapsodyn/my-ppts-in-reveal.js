@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Presatation by rhapsodyn</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-markdown>
+				## Deno从入门到DIY
+				**by 刘晓晓**
+			</section>
+			<section data-markdown>
+				## Content
+				+ Past: NODE => DENO
+				+ Now: diff deno node
+				+ Future: make yourself a ONED
+			</section>
+			<section>
+				<section data-markdown>
+					## NODE => DENO
+				</section>
+				<section data-markdown>
+					### Node
+					+ 一开始是ry的个人项目，在2009年发布，后来由Joynet赞助开发
+					+ 2012年，ry不在担任leader
+					+ 2014年，部分人不满足于Joynet的治理，分裂出了iojs
+					+ 2015年，node4.0，两个项目又merge了回来，现在iojs.org直接跳转nodejs.org
+					+ 2015年，node由Nodejs Foundation接手
+					+ 2019年，由OpenJs Foundation接手
+				</section>
+				<section data-markdown="">
+					### OpenJs Foundation
+					+ 是Linux Foundation的下级组织
+					+ 按国内的分类应该算公益二类
+					+ 项目包括：Appium, Dojo, jQuery, Node.js, webpack
+					+ member：Google, Microsoft, IBM, PayPal, GoDaddy
+				</section>
+				<section data-markdown>
+					### Deno
+					+ [https://deno.land/](https://deno.land/)
+					+ 读作dino，写作deno
+					+ `"deno" = shuffle("node")`
+					+ 跟nodejs是同一个author
+				</section>
+				<section data-markdown>
+					### ry
+					+ [https://github.com/ry](https://github.com/ry)
+					+ 目前已经取关了node.js官方的repo，只star一个branch的
+					+ [10 THINGS I REGRET ABOUT NODE.JS](https://2018.jsconf.eu/speakers/ryan-dahl-propel-a-machine-learning-framework-for-javascript.html)
+					+ 2018年开始写deno
+				</section>
+				<section data-markdown>
+					### tj
+					+ [https://github.com/tj](https://github.com/tj)
+					+ [_why](https://en.wikipedia.org/wiki/Why_the_lucky_stiff) of nodejs
+					+ author of expressjs koa commander n co
+					+ 觉得nodejs不行，创业决绝的用go去了
+				</section>
+				<section data-markdown>
+					### imho
+					+ deno也不太“行”
+					+ 虽然已经是1.0了，但是还是个[不敢跑分](https://www.techempower.com/benchmarks/)的弱鸡
+					+ 底层的不兼容（eg: libuv vs tokio）让deno无法兼容node的community
+					+ 没有community就啥也没有了（参见java）
+					+ 短期内看不到应用场景，也没有killer app（参见golang和cloud native的故事）
+				</section>
+			</section>
+			<section>
+				<section data-markdown>
+					## diff deno node
+				</section>
+				<section data-markdown>
+					### Typescript
+					+ examples/welcome.ts
+					+ typescript out-of-box (javascript也不是不行)
+					+ we [love](https://stackoverflow.blog/2020/05/27/2020-stack-overflow-developer-survey-results/) typescipt
+					+ I'm huge fan of [海神](https://en.wikipedia.org/wiki/Anders_Hejlsberg)
+				</section>
+				<section data-markdown>
+					### Security
+					+ examples/cat.ts
+					+ examples/echo_server.ts
+				</section>
+				<section data-markdown>
+					### Deps
+					+ no package.json
+					+ no package-lock.json
+					+ the golang way 
+						+ share by source code
+						+ not by jit or binary
+					+ [deno-is-a-browser-for-code](https://kitsonkelly.com/posts/deno-is-a-browser-for-code/)
+				</section>
+				<section data-markdown>
+					### Implicity Considered Harmful
+					+ node: 可选的后缀名(`.js` `.ts` `.json` `.whateveryoulike`)
+					+ node: 可选的index.js
+					+ node: require规则!!
+				</section>
+				<section data-markdown>
+					### Builtin utils
+					+ `deno fmt`
+					+ examples/test.ts
+					+ examples/color.ts
+				</section>
+			</section>
+			<section>
+				<section data-markdown>
+					## make yourself a ONED
+				</section>
+				<section data-markdown>
+					### How deno written
+					+ rust + v8
+					+ 底层：from [golang](https://github.com/denoland/deno/tree/golang) to [rust](https://github.com/denoland/deno/blob/master/core/Cargo.toml#L22)
+					+ 上层：[internal](https://github.com/denoland/deno/blob/master/core/core.js) lib (eg: kernel code) using javascript
+					+ 上层：[external](https://github.com/denoland/deno/tree/master/std) lib (eg: stdlib) using typescript
+				</section>
+				<section data-markdown>
+					### How deno written \#2
+					+ `find . -name "*.ts" | xargs wc -l` 73325
+					+ `find . -name "*.rs" | xargs wc -l` 35772
+					+ custom event queue (我猜的
+					+ 用rusty_v8来简化v8（c++）的使用
+					+ [tokio](https://tokio.rs/) for net
+				</section>
+				<section data-markdown>
+					### How fancy frameworks written
+					+ deno: rust + v8
+ 					+ node: libuv + v8
+ 					+ openResty: nginx + luajit
+ 					+ unity3d: c/c++ + mono
+				</section>
+				<section data-markdown>
+					### But Why?
+					+ for fun （厉不厉害想不想学.jpg）
+					+ study interop
+					+ *fundamental rocks*
+				</section>
+				<section data-markdown>
+					### My Suggestion
+					+ ✨ QuickJs
+					+ ✨✨ deno
+					+ ✨✨✨ lua (not luajit)
+						+ why?
+						+ easy to read
+						+ easy to write
+				</section>
+			</section>
+			<section data-markdown>
+				## THE END
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			history: true,
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+	</script>
+</body>
+
+</html>

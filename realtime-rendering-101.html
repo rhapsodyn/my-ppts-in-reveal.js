@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Presatation by rhapsodyn</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-markdown>
+				## ~~三节课~~一节课教你做BIMV
+				**by 刘晓晓**
+			</section>
+			<section data-markdown>
+				## Content
+				+ Zen Of Realtime-Rendering
+				+ How To Make A Game
+				+ How To Make A BIMV
+			</section>
+			<section>
+				<section data-markdown>
+					## Zen Of Realtime-Rendering
+				</section>
+				<section data-markdown>
+					Encode
+				</section>
+				<section data-markdown>
+					### Why Realtime-Rendering === Game
+					+ [market value 2021: 138B](https://www.statista.com/statistics/246888/value-of-the-global-video-game-market/)
+					+ 复联4总票房：2.8B
+				</section>
+				<section data-markdown>
+					### Wait, How About Offline-Rendering?
+					![frozen](./assets/images/frozen.jpg)
+				</section>
+				<section data-markdown>
+					### Encode Picture
+					+ example.bmp
+					+ example.png
+				</section>
+				<section data-markdown>
+					### Encode Video
+					+ large.mp4
+					+ large.png
+				</section>
+				<section data-markdown>
+					### Game
+					+ [video time](https://www.unrealengine.com/zh-CN/blog/a-first-look-at-unreal-engine-5)
+				</section>
+				<section data-markdown>
+					### Encode Game
+					conquer 60hz framerate chanllenge
+				</section>
+				<section data-markdown>
+					### But How?
+					+ double buffer: *lazy over eager*
+					+ culling: *virtual list*
+					+ baking: *eager over lazy*
+					+ bone/avatar: *abstraction*
+					+ ........
+					+ hardware ($$$$$$$)
+				</section>
+			</section>
+			<section>
+				<section data-markdown>
+					## How To Make A Game
+				</section>
+				<section data-markdown>
+					### 3 Things
+					+ hardware
+					+ software
+					+ people
+				</section>
+				<section data-markdown>
+					### Hardware 
+					![avn](./assets/images/avn.jpg)
+				</section>
+				<section data-markdown>
+					### Hardware - Graphic Card
+					+ GPU accelaration for: 
+						+ float caculation; 
+						+ matrix&vector caculation; 
+						+ ray tracing
+					+ [CUDA](https://cuda-tutorial.readthedocs.io/en/latest/tutorials/tutorial01/)
+					+ GPGPU for: AI
+				</section>
+				<section data-markdown>
+					### Software
+					+ OpenGl === libc of GPU
+					+ OpenEs / Vulkan
+				</section>
+				<section data-markdown>
+					### Software - GAME ENGINE!
+					+ Homemade OR ?
+					+ Unity3D: 2000+ dev-like
+					+ Unreal: 堡垒之夜有300+的dev-like
+					+ engine = framework + ide + workflow
+					+ 策/美/程 all on the engine
+				</section>
+				<section data-markdown>
+					### People
+					+ 制作人（producer）
+					+ 开发（game logic; engine; tool; server）
+					+ 美术（model; scene; animation）
+					+ 策划（数值; 关卡）
+				</section>
+			</section>
+			<section>
+				<section data-markdown>
+					## How To Make A BIMV
+				</section>
+				<section data-markdown>
+					### Threejs
+					+ lightweight engine
+					+ render-engine-like 
+						+ 有animation，但显得简陋
+						+ main-loop实际上需要自己实现（不过浏览器有`requestAnimationFrame`）
+						+ 没有IDE
+				</section>
+				<section data-markdown>
+					### Step by Step Example
+				</section>
+				<section data-markdown>
+					### Step1 - Coordinate System
+					+ Euler not the KING
+					+ Homogeneous IS
+					+ right-hand or left-hand
+					+ 所有类似`a.x = b.x + c.x`的代码，一定都是“错的”
+				</section>
+				<section data-markdown>
+					### Step2 - Camera
+					+ perspective
+					+ orthographic
+					+ multiple-able
+				</section>
+				<section data-markdown>
+					### Step3 - Object
+					+ geometry
+					+ material
+				</section>
+				<section data-markdown>
+					### Step4 - Light
+					+ multiple-able
+					+ where there's a light, there's a shadow
+				</section>
+				<section data-markdown>
+					### Step5 - Script
+					1. move camera
+					2. select object
+				</section>
+			</section>
+			<section data-markdown>
+				## THE END
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			history: true,
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+	</script>
+</body>
+
+</html>
